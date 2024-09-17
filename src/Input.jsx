@@ -4,7 +4,7 @@ function Input(props) {
     <div className="Input">
       <form onSubmit={onSubmit}>
         <label>Guess:</label>
-        <input />
+        <input type="text" maxlength="5" pattern="[A-Za-z]*"/>
         <button type="submit">Submit</button>
       </form>
     </div>

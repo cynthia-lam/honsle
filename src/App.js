@@ -10,14 +10,27 @@ function App() {
   const [tryNumber, setTryNumber] = useState(0);
   const [guesses, setGuesses] = useState(["     ", "     ", "     ", "     ", "     ", "     "]);
 
+  function verifyGuess (input) {
+    const letters = "abcdefghijklmnopqrstuvwxyz";
+    for (const letter of input) {
+      if (!letters.includes(letter)) {
+        return false;
+      }
+    }
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
     const guess = e.target.elements[0].value;
     if (tryNumber < tryLimit) {
-      const newGuesses = [...guesses];
-      newGuesses[tryNumber] = guess; // Update the guess list with the current guess
-      setGuesses(newGuesses); // Add new guess to the array
-      setTryNumber(tryNumber + 1);
+      if (verifyGuess(guess)) { // validate that only letters were inputted
+        const newGuesses = [...guesses];
+        newGuesses[tryNumber] = guess; // Update the guess list with the current guess
+        setGuesses(newGuesses); // Add new guess to the array
+        setTryNumber(tryNumber + 1);
+      } else {
+        alert('Please input alphabet characters only');
+      }
       e.target.reset(); // Clear the input field after submission
     }
   };
