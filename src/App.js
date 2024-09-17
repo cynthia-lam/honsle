@@ -19,7 +19,7 @@ function App() {
   function display() {
     while (tryNumber > tryLimit) {
       return (
-        <GuessList/>
+        <GuessList guess={currentGuess}/>
       )
     }
   };

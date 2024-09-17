@@ -1,15 +1,12 @@
 import GuessLetter from "./GuessLetter";
 
-function GuessList () {
+function GuessList (props) {
+  const guess = props.guess;
   return (
     <>
     <ul>
-      <li><GuessLetter/></li>
-      <li><GuessLetter/></li>
-      <li><GuessLetter/></li>
-      <li><GuessLetter/></li>
-      <li><GuessLetter/></li>
-      <li><GuessLetter/></li>
+      {/* <li><GuessLetter/></li> */}
+      <li>{guess}</li>
     </ul>
     </>
   )
