@@ -1,7 +1,12 @@
 function Input() {
+  
   return (
     <div className="Input">
-      <input></input>
+      <form>
+        <label>Guess:</label>
+        <input />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
