@@ -18,9 +18,9 @@ function App() {
   };
 
   function display() {
-    while (tryNumber < tryLimit) {
+    if (tryNumber < tryLimit) {
       return (
-        <GuessList guess={currentGuess}/>
+        <GuessList guess={currentGuess} tryNumber={tryNumber}/>
       )
     }
     return(
