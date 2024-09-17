@@ -1,14 +1,16 @@
 import GuessLetter from "./GuessLetter";
 
 function GuessList (props) {
+  const guesses = ["     ", "     ", "     ", "     ", "     ", "     "]
   const guess = props.guess;
   return (
-    <>
     <ul>
-      {/* <li><GuessLetter/></li> */}
-      <li>{guess}</li>
+      {guesses.map((guess, index) => (
+        <li key={index}>
+          <GuessLetter guess={guess} /> {/* Optionally use GuessLetter component */}
+        </li>
+      ))}
     </ul>
-    </>
   )
 }
 
