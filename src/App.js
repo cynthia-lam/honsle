@@ -17,13 +17,16 @@ function App() {
         return false;
       }
     }
+    return true;
   };
 
   function handleSubmit(e) {
     e.preventDefault();
     const guess = e.target.elements[0].value;
+    console.log(typeof(guess));
+    
     if (tryNumber < tryLimit) {
-      if (verifyGuess(guess)) { // validate that only letters were inputted
+      if (verifyGuess(guess.toLowerCase())) { // validate that only letters were inputted
         const newGuesses = [...guesses];
         newGuesses[tryNumber] = guess; // Update the guess list with the current guess
         setGuesses(newGuesses); // Add new guess to the array
