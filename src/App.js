@@ -10,6 +10,10 @@ function App() {
   const [tryNumber, setTryNumber] = useState(0);
   const [guesses, setGuesses] = useState(["     ", "     ", "     ", "     ", "     ", "     "]);
 
+  function gameIsActive () {
+    return tryNumber < tryLimit;
+  }
+
   function verifyGuess (input) {
     const letters = "abcdefghijklmnopqrstuvwxyz";
     for (const letter of input) {
@@ -25,7 +29,7 @@ function App() {
     const guess = e.target.elements[0].value;
     console.log(typeof(guess));
     
-    if (tryNumber < tryLimit) {
+    if (gameIsActive) {
       if (verifyGuess(guess.toLowerCase())) { // validate that only letters were inputted
         const newGuesses = [...guesses];
         newGuesses[tryNumber] = guess; // Update the guess list with the current guess
@@ -39,7 +43,7 @@ function App() {
   };
 
   function display() {
-    if (tryNumber < tryLimit) {
+    if (gameIsActive) {
       return (
         <GuessList guesses={guesses} />
       );
@@ -53,7 +57,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {display()}
-        {tryNumber < tryLimit && (
+        {gameIsActive && (
           <Input onSubmit={handleSubmit}/>
         )}
       </header>
