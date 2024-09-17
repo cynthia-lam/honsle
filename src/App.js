@@ -53,7 +53,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         {display()}
-        <Input onSubmit={handleSubmit} />
+        {tryNumber < tryLimit && (
+          <Input onSubmit={handleSubmit}/>
+        )}
       </header>
     </div>
   );
