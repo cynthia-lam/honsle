@@ -12,23 +12,27 @@ function App() {
 
   function handleSubmit (e) {
     e.preventDefault();
-    const guess = e.target;
+    const guess = e.target.elements[0].value;
     setCurrentGuess(guess);
+    setTryNumber(tryNumber + 1);
   };
 
   function display() {
-    while (tryNumber > tryLimit) {
+    while (tryNumber < tryLimit) {
       return (
         <GuessList guess={currentGuess}/>
       )
     }
+    return(
+      <p>Game over modal to be added here!</p>
+    )
   };
 
   return (
     <div className="App">
       <header className="App-header">
         {display()}
-        <Input/>
+        <Input onSubmit={handleSubmit}/>
       </header>
     </div>
   );
