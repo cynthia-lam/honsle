@@ -6,7 +6,7 @@ import Input from './Input';
 import GuessList from './GuessList';
 
 function App() {
-  const [tryNumber, setTryNumber] = useState(1);
+  const [tryNumber, setTryNumber] = useState(0);
 
   return (
     <div className="App">
