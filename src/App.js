@@ -15,7 +15,7 @@ function App() {
     const guess = e.target.elements[0].value;
     if (tryNumber < tryLimit) {
       const newGuesses = [...guesses];
-      newGuesses[tryNumber] = guess;
+      newGuesses[tryNumber] = guess; // Update the guess list with the current guess
       setGuesses(newGuesses); // Add new guess to the array
       setTryNumber(tryNumber + 1);
       e.target.reset(); // Clear the input field after submission
