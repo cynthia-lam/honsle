@@ -6,7 +6,7 @@ import GuessList from './GuessList';
 
 function App() {
   const tryLimit = 6;
-  const answer = "honse"; //change this to get random word from API call in the future
+  // const answer = "honse"; //change this to get random word from API call in the future
   const [tryNumber, setTryNumber] = useState(1);
   const [guesses, setGuesses] = useState(["     ", "     ", "     ", "     ", "     ", "     "]);
 
