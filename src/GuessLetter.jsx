@@ -1,6 +1,6 @@
-function GuessLetter () {
+function GuessLetter (props) {
   return (
-    <>HONSE</>
+    <>{props.guess}</>
   )
 }
 
