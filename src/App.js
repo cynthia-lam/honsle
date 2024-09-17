@@ -7,11 +7,11 @@ import GuessList from './GuessList';
 function App() {
   const tryLimit = 6;
   const answer = "honse"; //change this to get random word from API call in the future
-  const [tryNumber, setTryNumber] = useState(0);
+  const [tryNumber, setTryNumber] = useState(1);
   const [guesses, setGuesses] = useState(["     ", "     ", "     ", "     ", "     ", "     "]);
 
   function gameIsActive () {
-    return tryNumber < tryLimit;
+    return tryNumber <= tryLimit;
   }
 
   function verifyGuess (input) {
@@ -32,9 +32,12 @@ function App() {
     if (gameIsActive) {
       if (verifyGuess(guess.toLowerCase())) { // validate that only letters were inputted
         const newGuesses = [...guesses];
-        newGuesses[tryNumber] = guess; // Update the guess list with the current guess
+        newGuesses[tryNumber - 1] = guess; // Update the guess list with the current guess
         setGuesses(newGuesses); // Add new guess to the array
         setTryNumber(tryNumber + 1);
+        console.log(`Try number: ${tryNumber}`);
+        console.log(`Try limit: ${tryLimit}`);
+
       } else {
         alert('Please input alphabet characters only');
       }
@@ -42,23 +45,15 @@ function App() {
     }
   };
 
-  function display() {
-    if (gameIsActive) {
-      return (
-        <GuessList guesses={guesses} />
-      );
-    }
-    return (
-      <p>Game over modal to be added here!</p>
-    );
-  }
-
   return (
     <div className="App">
       <header className="App-header">
-        {display()}
-        {gameIsActive && (
+        <GuessList guesses={guesses} />
+        {gameIsActive() && (
           <Input onSubmit={handleSubmit}/>
+        )}
+        {!gameIsActive() && (
+          <p>Game over modal to be added</p>
         )}
       </header>
     </div>
