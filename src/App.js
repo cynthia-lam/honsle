@@ -8,6 +8,13 @@ import GuessList from './GuessList';
 function App() {
   const tryLimit = 6;
   const [tryNumber, setTryNumber] = useState(0);
+  const [currentGuess, setCurrentGuess] = useState("");
+
+  function handleSubmit (e) {
+    e.preventDefault();
+    const guess = e.target;
+    setCurrentGuess(guess);
+  };
 
   function display() {
     while (tryNumber > tryLimit) {
@@ -15,7 +22,7 @@ function App() {
         <GuessList/>
       )
     }
-  }
+  };
 
   return (
     <div className="App">
