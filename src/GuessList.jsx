@@ -1,5 +1,4 @@
-import { useState } from "react";
-import GuessLetter from "./GuessLetter";
+ import GuessLetter from "./GuessLetter";
 
 function GuessList (props) {
   const guesses = props.guesses;
