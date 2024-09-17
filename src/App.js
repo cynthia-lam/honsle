@@ -2,37 +2,39 @@
 import { useState } from 'react';
 import './App.css';
 import Input from './Input';
-// import { useState } from 'react';
 import GuessList from './GuessList';
 
 function App() {
   const tryLimit = 6;
   const [tryNumber, setTryNumber] = useState(0);
-  const [currentGuess, setCurrentGuess] = useState("");
+  const [guesses, setGuesses] = useState([]);
 
-  function handleSubmit (e) {
+  function handleSubmit(e) {
     e.preventDefault();
     const guess = e.target.elements[0].value;
-    setCurrentGuess(guess);
-    setTryNumber(tryNumber + 1);
+    if (tryNumber < tryLimit) {
+      setGuesses([...guesses, guess]); // Add new guess to the array
+      setTryNumber(tryNumber + 1);
+      e.target.reset(); // Optional: clear the input field after submission
+    }
   };
 
   function display() {
     if (tryNumber < tryLimit) {
       return (
-        <GuessList guess={currentGuess} tryNumber={tryNumber}/>
-      )
+        <GuessList guesses={guesses} />
+      );
     }
-    return(
+    return (
       <p>Game over modal to be added here!</p>
-    )
-  };
+    );
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         {display()}
-        <Input onSubmit={handleSubmit}/>
+        <Input onSubmit={handleSubmit} />
       </header>
     </div>
   );

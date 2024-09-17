@@ -1,15 +1,13 @@
+import { useState } from "react";
 import GuessLetter from "./GuessLetter";
 
 function GuessList (props) {
-  const guesses = ["     ", "     ", "     ", "     ", "     ", "     "]
-  const { guess, tryNumber } = props;
-  guesses[tryNumber-1] = guess;
-
+  const guesses = props.guesses;
   return (
     <ul>
       {guesses.map((guess, index) => (
         <li key={index}>
-          <GuessLetter guess={guess} /> {/* Optionally use GuessLetter component */}
+          <GuessLetter guess={guess} />
         </li>
       ))}
     </ul>
