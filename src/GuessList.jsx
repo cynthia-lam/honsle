@@ -2,7 +2,9 @@ import GuessLetter from "./GuessLetter";
 
 function GuessList (props) {
   const guesses = ["     ", "     ", "     ", "     ", "     ", "     "]
-  const guess = props.guess;
+  const { guess, tryNumber } = props;
+  guesses[tryNumber-1] = guess;
+
   return (
     <ul>
       {guesses.map((guess, index) => (
