@@ -1,6 +1,15 @@
+import GuessLetter from "./GuessLetter";
+
 function GuessWord (props) {
+  const word = props.guess;
   return (
-    <>{props.guess}</>
+    <ul>
+      {Array.from(word).map((letter, index) => (
+        <li key={index}>
+          <GuessLetter letter={letter} />
+        </li>
+      ))}
+    </ul>
   )
 }
 
