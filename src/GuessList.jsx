@@ -1,4 +1,4 @@
- import GuessLetter from "./GuessLetter";
+ import GuessWord from "./GuessWord";
 
 function GuessList (props) {
   const guesses = props.guesses;
@@ -6,7 +6,7 @@ function GuessList (props) {
     <ul>
       {guesses.map((guess, index) => (
         <li key={index}>
-          <GuessLetter guess={guess} />
+          <GuessWord guess={guess} />
         </li>
       ))}
     </ul>
