@@ -1,7 +1,9 @@
+import "./styles/GuessLetter.css"
+
 function GuessLetter (props) {
   const letter = props.letter;
   return (
-    <div>
+    <div className="guessLetter">
       {letter}
     </div>
   )
