@@ -1,3 +1,9 @@
 .guessLetter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid;
+  height: 3em;
+  width: 3em;
+  margin: 0.2em 0.2em 0.2em 0.2em;
 }
