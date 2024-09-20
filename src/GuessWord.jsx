@@ -1,17 +1,17 @@
 import GuessLetter from "./GuessLetter";
-import "./styles/GuessWord";
+import "./styles/GuessWord.css";
 
-function GuessWord (props) {
+function GuessWord(props) {
   const word = props.guess;
   return (
-    <ul>
+    <div className="guessWord">
       {Array.from(word).map((letter, index) => (
-        <li key={index}>
+        <div key={index}>
           <GuessLetter letter={letter} />
-        </li>
+        </div>
       ))}
-    </ul>
-  )
+    </div>
+  );
 }
 
 export default GuessWord;
