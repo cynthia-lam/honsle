@@ -1,4 +1,5 @@
 import GuessLetter from "./GuessLetter";
+import "./styles/GuessWord";
 
 function GuessWord (props) {
   const word = props.guess;
