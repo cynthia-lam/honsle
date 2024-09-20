@@ -1,9 +1,10 @@
  import GuessWord from "./GuessWord";
+ import "./styles/GuessList.css";
 
 function GuessList (props) {
   const guesses = props.guesses;
   return (
-    <ul>
+    <ul className="guessList">
       {guesses.map((guess, index) => (
         <li key={index}>
           <GuessWord guess={guess} />
