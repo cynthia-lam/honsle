@@ -6,13 +6,10 @@ function GuessLetter(props) {
   console.log(`index is: ${index}`);
   
 
-  function colour(letter, index) {
-    console.log(`index: ${index}, letter: ${letter}`);
-    
+  function colour(letter, index) {  
     switch (true) {
       case index === 0 && letter === 'h':
         return 'green';
-        console.log("index is 0 AND letter is h");
       case index === 1 && letter === 'o':
         return 'green';
       case index === 2 && letter === 'n':
