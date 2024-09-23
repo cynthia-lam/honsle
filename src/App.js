@@ -11,7 +11,7 @@ function App() {
   const [guesses, setGuesses] = useState(["     ", "     ", "     ", "     ", "     ", "     "]);
   const [gameState, setGameState] = useState('in play'); //'in play', 'won', 'lost'
 
-  function verifyGuess (input) {
+  function verifyGuess(input) {
     const letters = "abcdefghijklmnopqrstuvwxyz";
     for (const letter of input) {
       if (!letters.includes(letter)) {
@@ -25,28 +25,32 @@ function App() {
     e.preventDefault();
     const guess = e.target.elements[0].value;
 
+    // Validate that only letters were inputted
+    if (!verifyGuess(guess)) {
+      alert('Please input alphabet characters only');
+      e.target.reset(); // Clear the input field after submission
+      return;
+    }
+
     // Check if it's the winning guess
-    if (guess === answer) {
+    if (guess.toLowerCase() === answer) {
       setGameState('won');
+      return;
     }
 
     // Check if it's the losing guess
-    if (tryNumber > tryLimit) {
+    if (tryNumber >= tryLimit) {
       setGameState('lost');
     }
-    
-    if (gameState === 'in play') {
-      if (verifyGuess(guess.toLowerCase())) { // Validate that only letters were inputted
-        const newGuesses = [...guesses];
-        newGuesses[tryNumber - 1] = guess; // Update the guess list with the current guess
-        setGuesses(newGuesses); // Add new guess to the array
-        setTryNumber(tryNumber + 1);
 
-      } else {
-        alert('Please input alphabet characters only');
-      }
-      e.target.reset(); // Clear the input field after submission
+    if (gameState === 'in play') {
+      const newGuesses = [...guesses];
+      newGuesses[tryNumber - 1] = guess; // Update the guess list with the current guess
+      setGuesses(newGuesses); // Add new guess to the array
+      setTryNumber(tryNumber + 1);
     }
+
+    e.target.reset(); // Clear the input field after submission
   };
 
   return (
@@ -54,13 +58,13 @@ function App() {
       <header className="App-header">
         <GuessList guesses={guesses} />
         {gameState === 'in play' && (
-          <Input onSubmit={handleSubmit}/>
+          <Input onSubmit={handleSubmit} />
         )}
         {gameState === 'won' && (
-          <p>ur great</p>
+          <p>You won!</p>
         )}
         {gameState === 'lost' && (
-          <p>u suck</p>
+          <p>Sorry :( That's too many guesses.</p>
         )}
       </header>
     </div>
