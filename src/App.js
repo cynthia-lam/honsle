@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import Input from './Input';
 import GuessList from './GuessList';
+import GameOverModal from './GameOverModal';
 
 function App() {
   const tryLimit = 6;
@@ -24,6 +25,12 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     const guess = e.target.elements[0].value;
+
+    // Validate that guess isn't empty
+    if (!guess.trim()) {
+      alert('Please enter a guess');
+      return;
+    }
 
     // Validate that only letters were inputted
     if (!verifyGuess(guess)) {
@@ -61,10 +68,10 @@ function App() {
           <Input onSubmit={handleSubmit} />
         )}
         {gameState === 'won' && (
-          <p>You won!</p>
+          <GameOverModal state={gameState}/>
         )}
         {gameState === 'lost' && (
-          <p>Sorry :( That's too many guesses.</p>
+          <GameOverModal state={gameState}/>
         )}
       </header>
     </div>
@@ -75,13 +82,6 @@ export default App;
 
 // planning
 /* 
-- state/global vars: tryLimit, tryNumber
-- flow:
-  - guess at bottom
-  - onSubmit: tryNumber ++, populate <GuessList/> with <GuessLetter/> mapped through currentGuess
-  - assign colours based on rules
-- functions:
-  - display: keep on running while tryNumber <= try Limit
-  - letterChecker: assigns styling based on letter
-  - openModal: when gameOver
+- add modals
+- double check logic works for game win/lose
 */
