@@ -20,6 +20,7 @@ function GuessLetter(props) {
       case index === 3 && letter === 's':
         return 'green';
       case index === 4 && letter === 'e':
+        return 'green';
       case 'honse'.includes(letter):
         return 'yellow';
       default:
