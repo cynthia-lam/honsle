@@ -82,6 +82,8 @@ export default App;
 
 // planning
 /* 
-- add modals
+- add one new component that will contain the game active components (GuessList and Input)
+- build out the won/lost modals
 - double check logic works for game win/lose
+- add honses
 */
