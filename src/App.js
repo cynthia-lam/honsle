@@ -6,13 +6,10 @@ import GuessList from './GuessList';
 
 function App() {
   const tryLimit = 6;
-  const answer = "honse"; //change this to get random word from API call in the future
+  const answer = "honse"; // Eventually change this to get random word from API call in the future
   const [tryNumber, setTryNumber] = useState(1);
   const [guesses, setGuesses] = useState(["     ", "     ", "     ", "     ", "     ", "     "]);
-
-  function gameIsActive () {
-    return tryNumber <= tryLimit;
-  }
+  const [gameState, setGameState] = useState('in play'); //'in play', 'won', 'lost'
 
   function verifyGuess (input) {
     const letters = "abcdefghijklmnopqrstuvwxyz";
@@ -27,13 +24,19 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault();
     const guess = e.target.elements[0].value;
+
+    // Check if it's the winning guess
     if (guess === answer) {
-      alert('Game won modal');
-      
+      setGameState('won');
+    }
+
+    // Check if it's the losing guess
+    if (tryNumber >= tryLimit) {
+      setGameState('lost');
     }
     
-    if (gameIsActive) {
-      if (verifyGuess(guess.toLowerCase())) { // validate that only letters were inputted
+    if (gameState === 'in play') {
+      if (verifyGuess(guess.toLowerCase())) { // Validate that only letters were inputted
         const newGuesses = [...guesses];
         newGuesses[tryNumber - 1] = guess; // Update the guess list with the current guess
         setGuesses(newGuesses); // Add new guess to the array
@@ -52,11 +55,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <GuessList guesses={guesses} />
-        {gameIsActive() && (
+        {gameState === 'in play' && (
           <Input onSubmit={handleSubmit}/>
         )}
-        {!gameIsActive() && (
-          <p>Game over modal to be added</p>
+        {gameState === 'won' && (
+          <p>ur great</p>
+        )}
+        {gameState === 'lost' && (
+          <p>u suck</p>
         )}
       </header>
     </div>
