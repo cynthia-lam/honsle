@@ -31,7 +31,7 @@ function App() {
     }
 
     // Check if it's the losing guess
-    if (tryNumber >= tryLimit) {
+    if (tryNumber > tryLimit) {
       setGameState('lost');
     }
     
@@ -41,8 +41,6 @@ function App() {
         newGuesses[tryNumber - 1] = guess; // Update the guess list with the current guess
         setGuesses(newGuesses); // Add new guess to the array
         setTryNumber(tryNumber + 1);
-        console.log(`Try number: ${tryNumber}`);
-        console.log(`Try limit: ${tryLimit}`);
 
       } else {
         alert('Please input alphabet characters only');
