@@ -7,7 +7,7 @@ function GuessWord(props) {
     <div className="guessWord">
       {Array.from(word).map((letter, index) => (
         <div key={index}>
-          <GuessLetter letter={letter} />
+          <GuessLetter letter={letter} index={index}/>
         </div>
       ))}
     </div>
