@@ -7,3 +7,15 @@
   width: 3em;
   margin: 0.2em 0.2em 0.2em 0.2em;
 }
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.black {
+  background-color: black;
+}
