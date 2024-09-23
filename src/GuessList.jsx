@@ -7,7 +7,7 @@ function GuessList (props) {
     <ul className="guessList">
       {guesses.map((guess, index) => (
         <li key={index}>
-          <GuessWord guess={guess} />
+          <GuessWord guess={guess} index={index}/>
         </li>
       ))}
     </ul>
